@@ -158,11 +158,10 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.19.4",
-      "Source": "deps",
-      "RemotePkgRef": "deps::C:/Users/chris/Documents/DEV_R/xfun",
-      "RemoteType": "deps",
-      "Hash": "7a0a446b8874ed9a1e732f072e7fecf1"
+      "Version": "0.19",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a42372606cb76f34da9d090326e9f955"
     },
     "yaml": {
       "Package": "yaml",
