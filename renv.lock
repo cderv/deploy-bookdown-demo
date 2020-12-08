@@ -71,10 +71,10 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.30.2",
+      "Version": "1.30",
       "Source": "Repository",
-      "Repository": null,
-      "Hash": "0f4516714d9fc5d63ce70973670ea645"
+      "Repository": "CRAN",
+      "Hash": "eed7ee0d02eee88d53881cdc92457c62"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -119,10 +119,10 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.5.3",
+      "Version": "2.5",
       "Source": "Repository",
-      "Repository": null,
-      "Hash": "6ca3b788d6fcf04a6b4e9e63e9cc0c51"
+      "Repository": "CRAN",
+      "Hash": "20a0a94af9e8f7040510447763aab3e9"
     },
     "stringi": {
       "Package": "stringi",
