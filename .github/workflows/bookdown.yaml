@@ -34,7 +34,7 @@ jobs:
 
       - name: Install packages
         run: |
-          install.packages("renv")'
+          install.packages("renv")
           renv::restore()'
         shell: Rscript {0}
 
