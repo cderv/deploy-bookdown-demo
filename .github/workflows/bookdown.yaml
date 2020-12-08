@@ -34,11 +34,25 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
+          install.packages("renv")'
+          renv::restore()'
+        shell: Rscript {0}
 
       - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+        id: built-book
+        run: |
+          res <- bookdown::render_book("index.Rmd", quiet = TRUE)
+          cat(sprintf("::set-output name=dir::%s", dirname(res)))
+        shell: Rscript {0}
 
-      - name: Book folder created
-        run: ls "_book"
+      - name: setup rsconnect and create manifest
+        run: |
+          renv::install("rsconnect")'
+          book_dir <- ${{ steps.built-book.outputs.dir}}
+          rsconnect::writeManifest(book_dir)
+        shell: Rscript {0}
+
+      - name: check content
+        run: ls ${{ steps.built-book.outputs.dir}}
+
+
