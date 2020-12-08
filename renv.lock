@@ -57,16 +57,10 @@
     },
     "htmltools": {
       "Package": "htmltools",
-      "Version": "0.5.0.9003",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "htmltools",
-      "RemoteUsername": "rstudio",
-      "RemotePkgRef": "rstudio/htmltools",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "636b95eaffb29ecdc17d2e63a7c5357dc9d7e063",
-      "Hash": "f550a9fbe0a854464b6ea3c06027da74"
+      "Version": "0.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7d651b7131794fe007b1ad6f21aaa401"
     },
     "jsonlite": {
       "Package": "jsonlite",
@@ -146,15 +140,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.27.1",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "tinytex",
-      "RemoteUsername": "yihui",
-      "RemoteRef": "master",
-      "RemoteSha": "e1b43e503642bde86f00ec6428eb7f2e0faca566",
-      "Hash": "fbc183bd8bb323b24bcec3abb577824c"
+      "Version": "0.27",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "264b4a31d35bb6833566a7763356ab63"
     },
     "xfun": {
       "Package": "xfun",
