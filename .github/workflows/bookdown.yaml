@@ -48,7 +48,7 @@ jobs:
       - name: setup rsconnect and create manifest
         run: |
           renv::install("rsconnect")
-          book_dir <- ${{ steps.built-book.outputs.dir}}
+          book_dir <- "${{ steps.built-book.outputs.dir}}"
           rsconnect::writeManifest(book_dir)
         shell: Rscript {0}
 
