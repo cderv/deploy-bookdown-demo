@@ -3,7 +3,7 @@ on:
     branches:
       - main
       - master
-    path: ./bookdown-rsconnect-build.yaml
+    paths: ./bookdown-rsconnect-build.yaml
   workflow_dispatch:
 
 name: book-deploy-build
