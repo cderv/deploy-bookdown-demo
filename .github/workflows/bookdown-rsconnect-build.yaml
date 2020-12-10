@@ -21,8 +21,17 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v1
 
-      - name: Install rsconnect
-        run: install.packages("rsconnect")
+      - name: Cache Renv packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: renv-${{ hashFiles('renv.lock') }}
+          restore-keys: renv-
+
+      - name: Install packages
+        run: |
+          install.packages("renv")
+          renv::restore()
         shell: Rscript {0}
 
       - name: Authenticate
@@ -31,6 +40,7 @@ jobs:
           CONNECT_API_KEY: ${{ secrets.RSC_BETA_TOKEN }}
           CONTENT_ID: 14651
         run: |
+          install.packages("rsconnect")
           rsconnect::addConnectServer(Sys.getenv("CONNECT_SERVER"), "RSC")
           rsconnect::connectApiUser(
             account = "GHA",
@@ -40,7 +50,6 @@ jobs:
 
       - name: Deploy Content
         run: |
-          install.packages("rmarkdown")
           rsconnect::deploySite(
             appId = Sys.getenv("CONTENT_ID"),
             render = "server")
