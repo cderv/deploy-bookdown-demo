@@ -59,10 +59,9 @@ jobs:
           CONTENT_GUID: 3657a4c3-31a4-420d-826f-cfa097c91afe
           CONTENT_ID: 14650
         run: |
-          pip install rsconnect-python
+          pip3 install rsconnect-python
           rsconnect deploy manifest ${{ steps.built-book.outputs.dir}} \
             -s $CONNECT_SERVER \
             -k $CONNECT_API_KEY \
             -a $CONTENT_ID \
-            -t "Demo book deployed with rsconnect-python" \
-            -v
+            -t "Demo book deployed with rsconnect-python"
