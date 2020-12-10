@@ -11,7 +11,6 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      RSC_API_KEY: ${{ secrets.RSTUDIO_CONNECT_API_KEY}}
       RENV_PATHS_ROOT: ~/.local/share/renv
     steps:
       - name: Checkout repo
@@ -52,7 +51,10 @@ jobs:
           rsconnect::writeManifest(book_dir)
         shell: Rscript {0}
 
-      - name: check content
-        run: ls ${{ steps.built-book.outputs.dir}}
-
-
+      - name: Publish the book
+        uses: rstudio/actions/connect-publish@main
+        with:
+          api-key: ${{ secrets.RSC_BETA_TOKEN }}
+          url: https://beta.rstudioconnect.com/
+          access-type: logged_in
+          dir: ${{ steps.built-book.outputs.dir}}:/cderv/demo_book
