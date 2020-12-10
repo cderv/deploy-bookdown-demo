@@ -63,3 +63,4 @@ jobs:
           bundle <- bundle_dir("${{ steps.built-book.outputs.dir}}")
           content <- deploy(client, bundle, name = "demo-book")
           poll_task(content)
+        shell: Rscript {0}
