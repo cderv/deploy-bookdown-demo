@@ -30,9 +30,10 @@ jobs:
           CONNECT_SERVER: https://beta.rstudioconnect.com/
           CONNECT_API_KEY: ${{ secrets.RSC_BETA_TOKEN }}
         run: |
+          rsconnect::addConnectServer(Sys.getenv("CONNECT_SERVER"), "RSC")
           rsconnect::connectApiUser(
             account = "GHA",
-            server = Sys.getenv("CONNECT_SERVER"),
+            server = "RSC",
             apiKey = Sys.getenv("CONNECT_API_KEY"))
         shell: Rscript {0}
 
