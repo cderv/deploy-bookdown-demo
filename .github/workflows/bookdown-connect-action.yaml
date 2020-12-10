@@ -6,7 +6,7 @@ on:
     paths: .github/workflows/bookdown-connect-action.yaml
   workflow_dispatch:
 
-name: bookdown-deploy-r-api
+name: bookdown-deploy-connect-action
 
 jobs:
   build:
