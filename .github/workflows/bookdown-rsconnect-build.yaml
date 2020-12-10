@@ -1,0 +1,41 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+    path: ./bookdown-rsconnect-build.yaml
+  workflow_dispatch:
+
+name: book-deploy-build
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_PATHS_ROOT: ~/.local/share/renv
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Install rsconnect
+        run: install.packages("rsconnect")
+        shell: Rscript {0}
+
+      - name: Authenticate
+        env:
+          CONNECT_SERVER: https://beta.rstudioconnect.com/
+          CONNECT_API_KEY: ${{ secrets.RSC_BETA_TOKEN }}
+        run: |
+          rsconnect::connectApiUser(
+            account = "GHA",
+            server = Sys.getenv("CONNECT_SERVER"),
+            apiKey = Sys.getenv("CONNECT_API_KEY"))
+        shell: Rscript {0}
+
+      - name: Check Account
+        run: rsconnect::accounts()
+        shell: Rscript {0}
