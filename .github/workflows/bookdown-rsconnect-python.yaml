@@ -60,7 +60,7 @@ jobs:
           CONTENT_ID: 14650
         run: |
           pip install rsconnect-python
-          rsconnect manifest ${{ steps.built-book.outputs.dir}} \
+          rsconnect deploy manifest ${{ steps.built-book.outputs.dir}} \
             -s $CONNECT_SERVER \
             -k $CONNECT_API_KEY \
             -a $CONTENT_ID \
