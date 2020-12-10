@@ -62,6 +62,6 @@ jobs:
           library(connectapi)
           client <- connect()
           bundle <- bundle_dir("${{ steps.built-book.outputs.dir}}")
-          content <- deploy(client, bundle, guid = Sys.getenv("CONTENT_GUID", NULL))
+          content <- deploy(client, bundle, guid = Sys.getenv("CONTENT_GUID"))
           poll_task(content)
         shell: Rscript {0}
