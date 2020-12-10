@@ -40,6 +40,7 @@ jobs:
 
       - name: Deploy Content
         run: |
+          install.packages("rmarkdown")
           rsconnect::deploySite(
             appId = Sys.getenv("CONTENT_ID"),
             render = "server")
