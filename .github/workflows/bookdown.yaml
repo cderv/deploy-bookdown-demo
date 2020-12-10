@@ -5,7 +5,7 @@ on:
       - master
   workflow_dispatch:
 
-name: bookdown
+name: bookdown-deploy-r-api
 
 jobs:
   build:
