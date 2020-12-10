@@ -3,7 +3,7 @@ on:
     branches:
       - main
       - master
-    paths: ./bookdown-rsconnect-python.yaml
+    paths: .github/workflows/bookdown-rsconnect-python.yaml
   workflow_dispatch:
 
 name: book-deploy-python-api

@@ -3,7 +3,7 @@ on:
     branches:
       - main
       - master
-    paths: ./bookdown.yaml
+    paths: .github/workflows/bookdown.yaml
   workflow_dispatch:
 
 name: bookdown-deploy-r-api
