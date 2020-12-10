@@ -56,11 +56,12 @@ jobs:
         env:
           CONNECT_SERVER: https://beta.rstudioconnect.com/
           CONNECT_API_KEY: ${{ secrets.RSC_BETA_TOKEN }}
+          CONTENT_GUID: 433c530b-8111-4f00-bf3f-56413fb56499
         run: |
           renv::install("rstudio/connectapi")
           library(connectapi)
           client <- connect()
           bundle <- bundle_dir("${{ steps.built-book.outputs.dir}}")
-          content <- deploy(client, bundle, name = "demo-book")
+          content <- deploy(client, bundle, guid = Sys.getenv("CONTENT_GUID", NULL))
           poll_task(content)
         shell: Rscript {0}
