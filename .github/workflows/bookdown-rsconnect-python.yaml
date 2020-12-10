@@ -17,9 +17,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
-
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v1
         with:
@@ -52,17 +49,17 @@ jobs:
           rsconnect::writeManifest(book_dir)
         shell: Rscript {0}
 
-      - name: Publish the book using connect API
+      - name: Publish the book using rsconnect-python
         env:
           CONNECT_SERVER: https://beta.rstudioconnect.com/
           CONNECT_API_KEY: ${{ secrets.RSC_BETA_TOKEN }}
-          CONTENT_GUID: 433c530b-8111-4f00-bf3f-56413fb56499
+          CONTENT_GUID: 3657a4c3-31a4-420d-826f-cfa097c91afe
+          CONTENT_ID: 14650
         run: |
-          renv::install("rstudio/connectapi")
-          library(connectapi)
-          client <- connect()
-          bundle <- bundle_dir("${{ steps.built-book.outputs.dir}}")
-          content <- deploy(client, bundle, guid = Sys.getenv("CONTENT_GUID"))
-          poll_task(content)
-        shell: Rscript {0}
-
+          pip install rsconnect-python
+          rsconnect manifest ${{ steps.built-book.outputs.dir}} \
+            -s $CONNECT_SERVER
+            -k $CONNECT_API_KEY
+            -a $CONTENT_ID
+            -t "Demo book deployed with rsconnect-python"
+            -v
