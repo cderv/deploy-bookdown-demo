@@ -1,9 +1,10 @@
 
-# Deploy a bookdown book with Github Action to RStudio connect (bookdown.org)
+# Deploy a bookdown book with Github Action to RStudio connect service
 
-This book is from the https://github.com/rstudio/bookdown-demo
 
-This repo is just a demo on how to configure Github Action to publish to a Rstudio Connect based service (like bookdown.org)
+This repo is just a demo on how to configure Github Action to publish to a Rstudio Connect based service (like bookdown.org, beta.rstudioconnect.com, ...)
+
+All the instering stuff from this repo are in `.github/workflows/`.  The book itself is from the https://github.com/rstudio/bookdown-demo
 
 ## Deployment methods tested
 
