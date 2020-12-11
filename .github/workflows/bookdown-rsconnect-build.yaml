@@ -38,7 +38,6 @@ jobs:
         env:
           CONNECT_SERVER: https://beta.rstudioconnect.com/
           CONNECT_API_KEY: ${{ secrets.RSC_BETA_TOKEN }}
-          CONTENT_ID: 14651
         run: |
           install.packages("rsconnect")
           rsconnect::addConnectServer(Sys.getenv("CONNECT_SERVER"), "RSC")
@@ -49,6 +48,8 @@ jobs:
         shell: Rscript {0}
 
       - name: Deploy Content
+        env:
+          CONTENT_ID: 14651
         run: |
           rsconnect::deploySite(
             appId = Sys.getenv("CONTENT_ID"),
