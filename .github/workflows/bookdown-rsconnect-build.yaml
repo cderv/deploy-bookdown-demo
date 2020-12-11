@@ -52,5 +52,6 @@ jobs:
         run: |
           rsconnect::deploySite(
             appId = Sys.getenv("CONTENT_ID"),
-            render = "server", logLevel = "verbose")
+            render = "server", logLevel = "verbose",
+            forceUpdate = TRUE)
         shell: Rscript {0}
