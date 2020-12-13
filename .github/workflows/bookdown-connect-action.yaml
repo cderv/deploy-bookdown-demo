@@ -43,7 +43,6 @@ jobs:
         id: built-book
         run: |
           res <- bookdown::render_book("index.Rmd", quiet = TRUE)
-          res <- xfun::relative_path(res)
           cat(sprintf("::set-output name=dir::%s", dirname(res)))
         shell: Rscript {0}
 
@@ -62,4 +61,4 @@ jobs:
           api-key: ${{ secrets.RSC_BETA_TOKEN }}
           url: https://beta.rstudioconnect.com/
           access-type: logged_in
-          dir: ${{ steps.built-book.outputs.dir}}
+          dir: ${{ steps.built-book.outputs.dir}}:demo-deploy-bookdown
